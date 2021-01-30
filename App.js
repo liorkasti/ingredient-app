@@ -29,16 +29,28 @@ const componentKeys = [
 
 
 const Stack = createStackNavigator(
-    // {
-    //     Home: HomeScreen,
-    //     Categories: CategoriesScreen,
-    //     Recipe: RecipeScreen,
-    //     RecipesList: RecipesListScreen,
-    //     Ingredient: IngredientScreen,
-    //     Search: SearchScreen,
-    //     IngredientsDetails: IngredientsDetailsScreen,
-    //     Favorites: FavoritesScreen
-    // }
+    {
+        Home: HomeScreen,
+        Categories: CategoriesScreen,
+        Recipe: RecipeScreen,
+        RecipesList: RecipesListScreen,
+        Ingredient: IngredientScreen,
+        Search: SearchScreen,
+        IngredientsDetails: IngredientsDetailsScreen,
+        Favorites: FavoritesScreen
+    },
+    {
+        initialRouteName: 'Home',
+        // headerMode: 'float',
+        defaulfNavigationOptions: ({ navigation }) => ({
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            textAlign: 'center',
+            alignSelf: 'center',
+            flex: 1,
+          }
+        })
+      }
 );
 
 const App = () => {
@@ -61,6 +73,7 @@ const App = () => {
         <NavigationContainer >
             <StatusBar hidden />
             <SafeAreaView style={styles.container}>
+                
                 <Stack.Navigator
                     screenOptions={{
                         headerShown: false,
