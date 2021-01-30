@@ -1,20 +1,48 @@
-# Let's Code React-Native
+# Recipes App in React Native
+## Description:
+A react-native app that allows users to browse food recipes, read their description & cooking steps and visualize their ingredients. For each ingredient, users can also browse all the recipes that use that specific ingredient. The app also has support for recipe categories and comprehensive native search functionality. Additionally, all the data feed is modularized, so you can plug in your own backend effortlessly.
+<center><a href="https://www.instamobile.io/app-templates/food-app-template/"><img src="https://www.instamobile.io/wp-content/uploads/2019/07/Screen-Shot-2019-07-22-at-8.56.44-PM.png" /></a></center>
 
-## [Watch it on YouTube](http://bit.ly/ByProgrammersYT)
+## Getting Started
+To run the app, please follow the instructions and setup a development environment for the project.
+### Setup:
+* Install the latest LTS version of Node.js from the current address -
+https://nodejs.org/en/download/.
+### Installation:
+* Open your command line in Visual Studio Code or Windows Shell and run
+```
+git clone https://github.com/liorkasti/recipes-app.git
+```
+* You will need node and npm installed globally on your machine. Run:
+```
+yarn / npm i
+```
+* To start metro bundler, run:
+```
+yarn start / npm start / npx react-native start
+```
+* To start the app on your machine, open a new terminal inside your React Native project folder. Run the following:
+```
+npx react-native run-android
+```
 
-In this episode of "Let’s Code React Native" series, we are going to build a good looking Food Delivery App based on the design created by ILia on Dribbble.
+## Features
+- Recipes List
+- Categories
+- Ingredients
+- Recipes Details Screen
+- Photo Gallery
+- Detailed Description
+- Ingredients button
+- Ingredients List
+- Recipes by Ingredient
+- Search
+- Drawer Menu
+- Navigation Bar
+- Beautiful UI Design Kit
+- Compatible with Expo
+- Highly modularized codebase
 
-Be sure to subscribe to our YouTube channel for more videos like this!
-
-## Table of Contents
-
-| Code | Project | Preview | Inspiration | No. of Screens |
-| ------ | ------ | ------ | ------ | ------ |
-| LCRN08 | [Food Delivery App](https://youtu.be/diUDjNwZ8Lg) | <img src="https://cdn.dribbble.com/users/1716131/screenshots/14527824/media/c490abc83e617dcfca83cb67ebf279a1.png?compress=1&resize=1200x900" width="120" /> | [View](https://dribbble.com/shots/14527824-Food-Delivery-Mobile-App) | 3 |
-
-## Contributors
-
-<a href="https://github.com/byprogrammers/lets-code-react-native/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=byprogrammers/lets-code-react-native" />
-</a>
+###### TODOs: 
+* Debug ActivateIndicator and add style to it
 

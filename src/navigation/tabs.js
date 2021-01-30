@@ -8,7 +8,16 @@ import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom
 import Svg, { Path } from 'react-native-svg';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
-import { Home } from "../screens/Home/HomeScreen"
+import {
+    HomeScreen,
+    CategoriesScreen,
+    RecipeScreen,
+    RecipesListScreen,
+    IngredientScreen,
+    SearchScreen,
+    IngredientsDetailsScreen,
+    FavoritesScreen
+} from '../screens'
 
 import { COLORS, icons } from "../constants"
 
@@ -121,7 +130,7 @@ const Tabs = () => {
         >
             <Tab.Screen
                 name="Home"
-                component={Home}
+                component={HomeScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -144,7 +153,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Search"
-                component={Home}
+                component={SearchScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -167,7 +176,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Like"
-                component={Home}
+                component={FavoritesScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -189,8 +198,8 @@ const Tabs = () => {
             />
 
             <Tab.Screen
-                name="User"
-                component={Home}
+                name="Categories"
+                component={CategoriesScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image

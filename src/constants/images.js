@@ -9,7 +9,7 @@ const burger_restaurant_1 = require("../../assets/images/burger-restaurant.jpg")
 const burger_restaurant_2 = require("../../assets/images/burger-restaurant-2.jpg");
 const chicago_hot_dog = require("../../assets/images/chicago-hot-dog.jpg");
 const crispy_chicken_burger = require("../../assets/images/crispy-chicken-burger.jpg");
-const fries_restaurant = require("../assets/images/fries-restaurant.jpg");
+// const fries_restaurant = require("../assets/images/fries-restaurant.jpg");
 const hawaiian_pizza = require("../../assets/images/hawaiian-pizza.jpg");
 const honey_mustard_chicken_burger = require("../../assets/images/honey-mustard-chicken-burger.jpg");
 const hot_dog_restaurant = require("../../assets/images/hot-dog-restaurant.jpg");
@@ -41,7 +41,7 @@ export default {
     chicago_hot_dog,
     crispy_chicken_burger,
 
-    fries_restaurant,
+    // fries_restaurant,
     hawaiian_pizza,
     honey_mustard_chicken_burger,
     hot_dog_restaurant,
