@@ -18,6 +18,7 @@ import ViewIngredientsButton from '../../components/ViewIngredientsButton/ViewIn
 const { width: viewportWidth } = Dimensions.get('window');
 
 export default class RecipeScreen extends React.Component {
+  
   static navigationOptions = ({ navigation }) => {
     return {
       headerTransparent: 'true',

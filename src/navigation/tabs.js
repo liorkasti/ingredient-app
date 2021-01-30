@@ -20,6 +20,7 @@ import {
     FavoritesScreen
 } from '../screens'
 
+const  componentKeys = ["HomeScreen", "CategoriesScreen", "RecipeScreen", "RecipesListScreen", "IngredientScreen", "SearchScreen","IngredientsDetailsScreen","FavoritesScreen"];
 const Tab = createBottomTabNavigator();
 
 const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
@@ -93,6 +94,7 @@ const CustomTabBar = (props) => {
                 ></View>
                 <BottomTabBar
                     {...props.props}
+                    componentKeys={componentKeys}
                 />
             </View>
         )
