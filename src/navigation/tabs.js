@@ -2,11 +2,12 @@ import React from 'react';
 import {
     View,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native';
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
 import Svg, { Path } from 'react-native-svg';
 import { isIphoneX } from 'react-native-iphone-x-helper';
+import { COLORS, icons } from "../constants"
 
 import {
     HomeScreen,
@@ -18,8 +19,6 @@ import {
     IngredientsDetailsScreen,
     FavoritesScreen
 } from '../screens'
-
-import { COLORS, icons } from "../constants"
 
 const Tab = createBottomTabNavigator();
 
