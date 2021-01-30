@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { StyleSheet, View, StatusBar, YellowBox } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native'
 import Orientation from 'react-native-orientation-locker';
@@ -15,25 +16,30 @@ const App = () => {
             Orientation.lockToPortrait();
         });
 
+        // StatusBar.setHidden(true);
         return onOpenIndex();
     }, []);
 
     const onOpenIndex = () => {
         console.disableYellowBox = true;
     }
+    
+
 
     return (
-        <NavigationContainer>
+        <NavigationContainer >
             <Stack.Navigator
                 screenOptions={{
-                    headerShown: false
+                    headerShown: false,
+                    header: null
                 }}
                 initialRouteName={'Home'}
             >
+                {/* <StatusBar hidden /> */}
                 <Stack.Screen name="Home" component={Tabs} />
 
             </Stack.Navigator>
-        </NavigationContainer>
+        </NavigationContainer >
     )
 }
 
