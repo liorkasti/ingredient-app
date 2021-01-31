@@ -22,11 +22,6 @@ export default class HomeScreen extends React.Component {
 
   onPressRecipe = item => {
     console.log("The props: ",  JSON.stringify(this.props.navigation) );
-    // <HomeScreen.Screen
-    // name="Recipe"
-    // component={Recipe}
-    // item={item}
-    // />
     this.props.navigation.navigate('Recipe', { item });
   };
 

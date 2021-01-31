@@ -27,7 +27,9 @@ const componentKeys = [
     FavoritesScreen
 ]
 
+const Stack = createStackNavigator();
 
+/* alternative for Stack option:   
 const Stack = createStackNavigator(
     {
         Home: HomeScreen,
@@ -52,8 +54,9 @@ const Stack = createStackNavigator(
         })
       }
 );
+ */
 
-const App = () => {
+ const App = () => {
 
     useEffect(() => {
 
@@ -73,7 +76,7 @@ const App = () => {
         <NavigationContainer >
             <StatusBar hidden />
             <SafeAreaView style={styles.container}>
-                
+
                 <Stack.Navigator
                     screenOptions={{
                         headerShown: false,
