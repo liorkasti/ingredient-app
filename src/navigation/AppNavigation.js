@@ -33,32 +33,6 @@ const AppNavigator = () => {
   ];
 
   const Stack = createStackNavigator();
-  /* alternative for Stack option:   
-  const Stack = createStackNavigator(
-      {
-          Home: HomeScreen,
-          Categories: CategoriesScreen,
-          Recipe: RecipeScreen,
-          RecipesList: RecipesListScreen,
-          Ingredient: IngredientScreen,
-          Search: SearchScreen,
-          IngredientsDetails: IngredientsDetailsScreen,
-          Favorites: FavoritesScreen
-      },
-      {
-          initialRouteName: 'Home',
-          // headerMode: 'float',
-          defaulfNavigationOptions: ({ navigation }) => ({
-            headerTitleStyle: {
-              fontWeight: 'bold',
-              textAlign: 'center',
-              alignSelf: 'center',
-              flex: 1,
-            }
-          })
-        }
-  );
-   */
 
   useEffect(() => {
 
@@ -81,12 +55,9 @@ const AppNavigator = () => {
             headerShown: false,
           }}
           initialRouteName={'Home'}
-          componentKeys={componentKeys}
         >
-
-
-          <Stack.Screen name="Home" component={Tabs} />
-          <Stack.Screen name="Recipe" componentKeys={componentKeys} component={RecipeScreen} />
+          <Stack.Screen name="Home">{props => <Tabs {...props} extraData={componentKeys} />}</Stack.Screen>
+          <Stack.Screen name="Recipe" component={RecipeScreen} />
           <Stack.Screen name="RecipesList" component={RecipesListScreen} />
           <Stack.Screen name="Ingredient" component={IngredientScreen} />
           <Stack.Screen name="Search" component={SearchScreen} />

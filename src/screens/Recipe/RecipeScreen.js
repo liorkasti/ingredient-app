@@ -37,7 +37,7 @@ const { width: viewportWidth } = Dimensions.get('window');
 //     };
 //   }
 
-const RecipeScreen = ({ route, navigation }) => {
+const RecipeScreen = ({ navigation }) => {
 
   // const { navigation } = props;
   const [recipe, setRecipe] = useState();
@@ -48,8 +48,8 @@ const RecipeScreen = ({ route, navigation }) => {
 
 
   useEffect(() => {
-    console.log('\n\nRecipeScreen props: ', props.componentKeys + '\n\n')
-    console.log('RecipeScreen nav: ', JSON.stringify( navigation ))
+    console.log('\n\nRecipeScreen props: ', props + '\n\n')
+    // console.log('RecipeScreen nav: ', JSON.stringify( navigation ))
     
     // setRecipe(navigation.navigate("Recipe", { item }));
     console.log('RecipeScreen nav: ', JSON.stringify(recipe))

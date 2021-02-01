@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, ScrollView, Text, View, TouchableHighlight, Image } from 'react-native';
 import styles from './styles';
 import { recipes } from '../../data/dataArrays';
@@ -32,9 +32,13 @@ import { getCategoryName } from '../../data/MockDataAPI';
 
 const HomeScreen = ({ navigation }) => {
   
+  useEffect(() => {
+  }, []);
+
   const onPressRecipe = (item) => {
-    console.log("The props: ", JSON.stringify(navigation));
-    navigation.navigate("Recipe", { item });
+    // console.log("The props: ", JSON.stringify( props ));
+
+    navigation.navigate("Recipe", { Recipe, item });
   };
 
 
