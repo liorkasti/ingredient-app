@@ -145,14 +145,10 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('Lior')
-            storePassword System.console().readLine("\nKeystore password: qwer1234")
-            keyAlias System.console().readLine("\nAlias: qwer1234")
-            keyPassword System.console().readLine("\Alias password: qwer1234 ")
             storeFile file('debug.keystore')
-            storePassword 'qwer1234'
-            keyAlias 'qwer1234'
-            keyPassword 'qwer1234'
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
         }
     }
     buildTypes {
@@ -165,7 +161,6 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            signingConfig signingConfigs.release
         }
     }
 

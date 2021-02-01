@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FlatList,
   ScrollView,
@@ -17,25 +17,44 @@ import ViewIngredientsButton from '../../components/ViewIngredientsButton/ViewIn
 
 const { width: viewportWidth } = Dimensions.get('window');
 
-export default class RecipeScreen extends React.Component {
-  
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTransparent: 'true',
-      headerLeft: () => <BackButton
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
-    };
-  };
+// export default class RecipeScreen extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeSlide: 0
-    };
-  }
+//   static navigationOptions = ({ navigation }) => {
+//     return {
+//       headerTransparent: 'true',
+//       headerLeft: () => <BackButton
+//         onPress={() => {
+//           navigation.goBack();
+//         }}
+//       />
+//     };
+//   };
+
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       activeSlide: 0
+//     };
+//   }
+
+const RecipeScreen = ({ route, navigation }) => {
+
+  // const { navigation } = props;
+  const [recipe, setRecipe] = useState();
+  const [ activeSlide, setActiveSlide] = useState();
+  const item = navigation.getParam('item');
+  const category = getCategoryById(item.categoryId);
+  const title = getCategoryName(category.id);
+
+
+  useEffect(() => {
+    console.log('\n\nRecipeScreen props: ', props.componentKeys + '\n\n')
+    console.log('RecipeScreen nav: ', JSON.stringify( navigation ))
+    
+    // setRecipe(navigation.navigate("Recipe", { item }));
+    console.log('RecipeScreen nav: ', JSON.stringify(recipe))
+  }, [])
+
 
   renderImage = ({ item }) => (
     <TouchableHighlight>
@@ -46,85 +65,82 @@ export default class RecipeScreen extends React.Component {
   );
 
   onPressIngredient = item => {
-    var name = getIngredientName(item);
+    // const name = getIngredientName(item);
     let ingredient = item;
-    this.props.navigation.navigate('Ingredient', { ingredient, name });
+    // this.props.navigation.navigate('Ingredient', { ingredient, name });
+    navigation.navigate("Ingredient", { ingredient, item });
+
   };
 
-  render() {
-    const { activeSlide } = this.state;
-    const { navigation } = this.props;
-    const item = navigation.getParam('item');
-    const category = getCategoryById(item.categoryId);
-    const title = getCategoryName(category.id);
+  // render() {
 
-    return (
-      <ScrollView style={styles.container}>
-        <View style={styles.carouselContainer}>
-          <View style={styles.carousel}>
-            <Carousel
-              ref={c => {
-                this.slider1Ref = c;
-              }}
-              data={item.photosArray}
-              renderItem={this.renderImage}
-              sliderWidth={viewportWidth}
-              itemWidth={viewportWidth}
-              inactiveSlideScale={1}
-              inactiveSlideOpacity={1}
-              firstItem={0}
-              loop={false}
-              autoplay={false}
-              autoplayDelay={500}
-              autoplayInterval={3000}
-              onSnapToItem={index => this.setState({ activeSlide: index })}
-            />
-            <Pagination
-              dotsLength={item.photosArray.length}
-              activeDotIndex={activeSlide}
-              containerStyle={styles.paginationContainer}
-              dotColor="rgba(255, 255, 255, 0.92)"
-              dotStyle={styles.paginationDot}
-              inactiveDotColor="white"
-              inactiveDotOpacity={0.4}
-              inactiveDotScale={0.6}
-              carouselRef={this.slider1Ref}
-              tappableDots={!!this.slider1Ref}
-            />
-          </View>
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.carouselContainer}>
+        <View style={styles.carousel}>
+          <Carousel
+            ref={c => {
+              this.slider1Ref = c;
+            }}
+            data={item.photosArray}
+            renderItem={this.renderImage}
+            sliderWidth={viewportWidth}
+            itemWidth={viewportWidth}
+            inactiveSlideScale={1}
+            inactiveSlideOpacity={1}
+            firstItem={0}
+            loop={false}
+            autoplay={false}
+            autoplayDelay={500}
+            autoplayInterval={3000}
+            onSnapToItem={index => this.setState({ activeSlide: index })}
+          />
+          <Pagination
+            dotsLength={item.photosArray.length}
+            activeDotIndex={activeSlide}
+            containerStyle={styles.paginationContainer}
+            dotColor="rgba(255, 255, 255, 0.92)"
+            dotStyle={styles.paginationDot}
+            inactiveDotColor="white"
+            inactiveDotOpacity={0.4}
+            inactiveDotScale={0.6}
+            carouselRef={this.slider1Ref}
+            tappableDots={!!this.slider1Ref}
+          />
         </View>
-        <View style={styles.infoRecipeContainer}>
-          <Text style={styles.infoRecipeName}>{item.title}</Text>
-          <View style={styles.infoContainer}>
-            <TouchableHighlight
-              onPress={() => navigation.navigate('RecipesList', { category, title })}
-            >
-              <Text style={styles.category}>{getCategoryName(item.categoryId).toUpperCase()}</Text>
-            </TouchableHighlight>
-          </View>
-
-          <View style={styles.infoContainer}>
-            <Image style={styles.infoPhoto} source={require('../../../assets/icons/time.png')} />
-            <Text style={styles.infoRecipe}>{item.time} minutes </Text>
-          </View>
-
-          <View style={styles.infoContainer}>
-            <ViewIngredientsButton
-              onPress={() => {
-                let ingredients = item.ingredients;
-                let title = 'Ingredients for ' + item.title;
-                navigation.navigate('IngredientsDetails', { ingredients, title });
-              }}
-            />
-          </View>
-          <View style={styles.infoContainer}>
-            <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
-          </View>
+      </View>
+      <View style={styles.infoRecipeContainer}>
+        <Text style={styles.infoRecipeName}>{item.title}</Text>
+        <View style={styles.infoContainer}>
+          <TouchableHighlight
+            onPress={() => navigation.navigate('RecipesList', { category, title })}
+          >
+            <Text style={styles.category}>{getCategoryName(item.categoryId).toUpperCase()}</Text>
+          </TouchableHighlight>
         </View>
-      </ScrollView>
-    );
-  }
+
+        <View style={styles.infoContainer}>
+          <Image style={styles.infoPhoto} source={require('../../../assets/icons/time.png')} />
+          <Text style={styles.infoRecipe}>{item.time} minutes </Text>
+        </View>
+
+        <View style={styles.infoContainer}>
+          <ViewIngredientsButton
+            onPress={() => {
+              let ingredients = item.ingredients;
+              let title = 'Ingredients for ' + item.title;
+              navigation.navigate('IngredientsDetails', { ingredients, title });
+            }}
+          />
+        </View>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
+        </View>
+      </View>
+    </ScrollView>
+  );
 }
+// }
 
 /*cooking steps
 <View style={styles.infoContainer}>
@@ -133,3 +149,5 @@ export default class RecipeScreen extends React.Component {
 </View>
 <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
 */
+
+export default RecipeScreen;

@@ -20,7 +20,7 @@ import {
     FavoritesScreen
 } from '../screens'
 
-const  componentKeys = ["HomeScreen", "CategoriesScreen", "RecipeScreen", "RecipesListScreen", "IngredientScreen", "SearchScreen","IngredientsDetailsScreen","FavoritesScreen"];
+
 const Tab = createBottomTabNavigator();
 
 const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {

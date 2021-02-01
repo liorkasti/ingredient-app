@@ -6,27 +6,42 @@ import MenuImage from '../../components/MenuImage/MenuImage';
 // import DrawerActions from 'react-navigation';
 import { getCategoryName } from '../../data/MockDataAPI';
 
-export default class HomeScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Home',
-    headerLeft: () => <MenuImage
-      onPress={() => {
-        navigation.openDrawer();
-      }}
-    />
-  });
+// export default class HomeScreen extends React.Component {
+//   static navigationOptions = ({ navigation }) => ({
+//     title: 'Home',
+//     headerLeft: () => <MenuImage
+//       onPress={() => {
+//         navigation.openDrawer();
+//       }}
+//     />
+//   });
 
-  constructor(props) {
-    super(props);
-  }
+//   constructor(props) {
+//     super(props);
+//   }
 
-  onPressRecipe = item => {
-    console.log("The props: ",  JSON.stringify(this.props.navigation) );
-    this.props.navigation.navigate('Recipe', { item });
+// onPressRecipe = item => {
+//   console.log("The props: ", JSON.stringify(this.props.navigation));
+//   this.props.navigation.navigate('Recipe', { item });
+//   // <HomeScreen.Screen
+//   // name="Recipe"
+//   // component={Recipe}
+//   // item={item}
+//   // />
+// };
+
+const HomeScreen = ({ navigation }) => {
+  
+  const onPressRecipe = (item) => {
+    console.log("The props: ", JSON.stringify(navigation));
+    navigation.navigate("Recipe", { item });
   };
 
+
+
   renderRecipes = ({ item }) => (
-    <TouchableHighlight underlayColor='rgba(73,182,77,0.9)' onPress={() => this.onPressRecipe(item)}>
+    <TouchableHighlight underlayColor='rgba(73,182,77,0.9)' onPress={() => onPressRecipe(item)}>
+    {/* <TouchableHighlight underlayColor='rgba(73,182,77,0.9)' onPress={() => this.onPressRecipe(item)}> */}
       <View style={styles.container}>
         <Image style={styles.photo} source={{ uri: item.photo_url }} />
         <Text style={styles.title}>{item.title}</Text>
@@ -35,18 +50,21 @@ export default class HomeScreen extends React.Component {
     </TouchableHighlight>
   );
 
-  render() {
-    return (
-      <View>
-        <FlatList
-          vertical
-          showsVerticalScrollIndicator={false}
-          numColumns={2}
-          data={recipes}
-          renderItem={this.renderRecipes}
-          keyExtractor={item => `${item.recipeId}`}
-        />
-      </View>
-    );
-  }
+  // render() {
+  return (
+    <View>
+      <FlatList
+        vertical
+        showsVerticalScrollIndicator={false}
+        numColumns={2}
+        data={recipes}
+        // renderItem={this.renderRecipes}
+        renderItem={renderRecipes}
+        keyExtractor={item => `${item.recipeId}`}
+      />
+    </View>
+  );
 }
+
+export default HomeScreen;
+
